@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommender System</title>
+</head>
+<body>
+    <h1>Movie Recommender System</h1>
+    <form method="POST" action="{{ url_for('predict_movie') }}">
+        <label for="movie">Select a movie:</label>
+        <select name="movie" id="movie">
+            <option value="">Select Movie</option>
+            {% for movie in movie_list %}
+                <option value="{{ movie }}">{{ movie }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        <button type="submit">Show Recommendation</button>
+    </form>
+
+    
+        <div>
+            <h2>Top 5 Recommendations:</h2>
+            
+        {% if movie_name_result %}
+
+        {% for recommendation in movie_name_result %}
+            <div>
+                <p>{{ recommendation }}</p>
+            </div>
+        {% endfor %}
+
+        {% else %}
+        <p>No recommendations found.</p>
+
+        {% endif %}
+            <!-- Repeat for other recommendations -->
+        </div>
+    
+</body>
+</html>

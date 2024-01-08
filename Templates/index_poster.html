@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommender System</title>
+    
+    <!--For Loading the CSS File make Separate folder "static" for you all "CSS FILE" and "IMAGE"-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <center><h1>Movie Recommender System</h1></center>
+    <form method="POST" action="{{ url_for('predict_movie') }}">
+        <label for="movie">Select a movie:</label>
+        <center><select name="movie" id="movie">
+            <option value="" style="color:white">Select Movie</option>
+            {% for movie in movie_list %}
+                <option value="{{ movie }}">{{ movie }}</option>
+            {% endfor %}
+        </select></center>
+        <br><br>
+        <center><button type="submit">Show Recommendation</button></center>
+    </form>
+
+    <h2>Top 7 Recommendations For : {{ Actual_movie_search }}</h2>
+    <br>
+    <div id="movie">
+        
+        {% if movie_name_result %}
+            {% for i in range(movie_name_result|length) %}
+                <div>
+                    <p>{{ movie_name_result[i] }}</p>
+                    <img src="{{ movie_poster_url[i] }}" alt="Movie Poster">
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No recommendations found.</p>
+        {% endif %}
+    </div>
+    
+</body>
+</html>

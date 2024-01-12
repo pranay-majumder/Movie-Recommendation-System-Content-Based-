@@ -51,7 +51,7 @@ def recommend(movie_name):
     movie_id=movies_new[movies_new.index==index]['id']
     movie_id=np.array(movie_id)[0]
     # API URL from where we will get All Movie Details
-    url = "https://api.themoviedb.org/3/movie/{}?api_key=8265bd1679663a7ea12ac168da84d2e8&language=en-US".format(movie_id)
+    url = "https://api.themoviedb.org/3/movie/{}?api_key=<YOUR_API_KEY>&language=en-US".format(movie_id)
     # Request or Fetch data from this URL 
     data = requests.get(url)
     # converts the response from the API, which is typically in JSON format, into a Python dictionary.
@@ -75,7 +75,7 @@ def fetch_poster(index):
     movie_id = np.array(movie_id)[0]
 
     # API URL from where we will get All Movie Details
-    url = "https://api.themoviedb.org/3/movie/{}?api_key=8265bd1679663a7ea12ac168da84d2e8&language=en-US".format(movie_id)
+    url = "https://api.themoviedb.org/3/movie/{}?api_key=<YOUR_API_KEY>&language=en-US".format(movie_id)
 
     # Request or Fetch data from this URL 
     data = requests.get(url)
@@ -141,7 +141,7 @@ if __name__=='__main__':
 
 
 # https://api.themoviedb.org/3/movie/{movie_id}?api_key=YOUR_API_KEY&language=en-US
-# https://api.themoviedb.org/3/movie/65?api_key=6eac47901ec0def9d0012399c9c2bcf8&language=en-US
+# https://api.themoviedb.org/3/movie/65?api_key=<YOUR_API_KEY>&language=en-US
 # copy paste this "api" in google we will get some "json string".
 # go to "json viewer" to view the json string properly.
 # tmdb image path, go to stack overflow to get full_path details (http://image.tmdb.org/t/p/w500/your_poster_path)
